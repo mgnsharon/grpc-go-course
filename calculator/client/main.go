@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	pb "github.com/mgnsharon/grpc-go-course/sum/proto"
+	pb "github.com/mgnsharon/grpc-go-course/calculator/proto"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )
@@ -18,7 +18,7 @@ func main() {
 	}
 	defer conn.Close()
 
-	c := pb.NewSumServiceClient(conn)
+	c := pb.NewCalculatorServiceClient(conn)
 
 	doSum(c)
 }
