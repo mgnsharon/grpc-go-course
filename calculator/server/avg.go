@@ -30,15 +30,15 @@ func (s *Server) Avg(stream pb.CalculatorService_AvgServer) error {
 }
 
 func calculateAvg(nums []int64) float64 {
-	var res float64 = 0
+	var sum float64 = 0
 	var item_count = float64(len(nums))
-	for _, num := range nums {
-		res += float64(num)
-	}
-	if item_count > 0 {
-		res /= item_count
-	} else {
+
+	if item_count < 1 {
 		log.Fatal("Error: No items found.")
 	}
-	return res
+	for _, num := range nums {
+		sum += float64(num)
+	}
+	
+	return sum/item_count
 }
